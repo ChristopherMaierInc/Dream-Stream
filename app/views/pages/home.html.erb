@@ -1,4 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1 class="header">DreamWeaver Pillows</h1>
 
-<p>Your session is: <%= session[:cart_id] %></p>
+<div class="flex one three-1000 center">
+  <% @products.each do |product| %>
+  <article class="card">
+    <%= image_tag product.image_url %>
+    <footer>
+      <h3><%= product.name %></h3>
+      <p><%= product.description %></p>
+      <%= link_to "Buy", root_path, class: "button" %>
+    </footer>
+  </article>
+  <% end %>
+</div>
+
+
+<p>Your session is:
+  <%= session[:cart_id] %></p>
