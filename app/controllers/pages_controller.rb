@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    @products = Product.all
   end
 
   def cart
@@ -9,8 +10,12 @@ class PagesController < ApplicationController
   end
 
   def purchase
+    @cart = CartItems.all
     # Amount in cents
-    @amount = 500
+    @total = 0
+    @cart.each do |cart|
+      @total = @total + (cart.product.price * cart.qty)
+    end
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -19,9 +24,10 @@ class PagesController < ApplicationController
 
     charge = Stripe::Charge.create(
       :customer    => customer.id,
-      :amount      => @amount,
+      :amount      => @total,
       :description => 'Rails Stripe customer',
-      :currency    => 'usd'
+      :currency    => 'AUD',
+      :billingAddressLine1 => params[:stripeBillingAddressLine1]
     )
 
   rescue Stripe::CardError => e
