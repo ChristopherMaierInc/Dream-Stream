@@ -27,7 +27,7 @@ Product.create!([{
   name: 'DreamWeaver Custom',
   description: "Customise your own DreamWeaver pillow by uploading an image of your doggo.",
   price: 149.99,
-  image_url: "pillow4.png",
+  image_url: "",
   active: true
 },
 {
