@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    @order_item = current_order.order_items.new
+    @cart_products = current_cart.cart_products.new
   end
 end

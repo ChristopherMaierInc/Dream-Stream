@@ -1,9 +1,9 @@
 class Cart < ApplicationRecord
   belongs_to :order_status
   has_many :cart_products
-  
-  before_create :set_order_status
-  before_save :update_total
+
+  before_validation :set_order_status, on: :create
+  before_save :update_subtotal
 
   def subtotal
     cart_products.collect { |cp| cp.valid? ? (cp.qty * cp.unit_price) : 0 }.sum
