@@ -26,8 +26,7 @@ class PagesController < ApplicationController
       :customer    => customer.id,
       :amount      => @total,
       :description => 'Rails Stripe customer',
-      :currency    => 'AUD',
-      :billingAddressLine1 => params[:stripeBillingAddressLine1]
+      :currency    => 'AUD'
     )
 
   rescue Stripe::CardError => e
