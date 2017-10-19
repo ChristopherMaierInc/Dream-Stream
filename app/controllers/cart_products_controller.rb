@@ -14,7 +14,7 @@ class CartProductsController < ApplicationController
    def update
      @cart = current_cart
      @cart_product = @cart.cart_products.find(params[:id])
-     @cart_products.update_attributes(cart_product_params)
+     @cart_product.update_attributes(cart_product_params)
      @cart_products = @cart.cart_products
    end
 
