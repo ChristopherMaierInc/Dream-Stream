@@ -1,7 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Product.create(name: 'DreamWeaver Standard', description: "With patented transparent memory foam technology and proximity sensing creates beautiful white-noise to give you the best sleep you've ever had. Our goto memory foam pillow.", price: 129.00, image_url: "pillow1.png")
+Product.create(name: 'DreamWeaver Luxury', description: "Same relaxation brilliance as with the DreamWeaver Standard, the Luxury incorporates connectivity through Bluetooth and the ability to stream music or audio books to your pillow for advanced education or 'coercive persuasion'", price: 179.00, image_url: "pillow2.png")
+Product.create(name: 'DreamWeaver Elite', description: "This exotic, diamond encrusted, beauty adds a full 27 inch OLED panel and 16gb of storage to stream 4K movies right into your eyes while you sleep. Welcome, to heaven.", price: 229.00, image_url: "pillow3.png")
+Product.create(name: 'DreamWeaver Custom', description: "Customise your own DreamWeaver pillow by uploading an image of your doggo.", price: 149.00, image_url: "pillow4.png")

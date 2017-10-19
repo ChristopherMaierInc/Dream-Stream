@@ -1,1 +1,32 @@
 @import "bootstrap";
+
+body {
+  text-align: center;
+
+.header {
+  font-family: "Roboto", sans-serif;
+  font-size: 5em;
+}
+}
+
+.main {
+  padding-top: 100px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  text-align: center;
+}
+
+.logo {
+  width: 100%;
+}
+
+img {
+  width: 50%;
+}

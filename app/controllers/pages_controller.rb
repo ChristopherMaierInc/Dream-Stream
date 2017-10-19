@@ -20,7 +20,7 @@ class PagesController < ApplicationController
     @total = 0
     @cart.each do |checkout|
       @total = @total + (checkout.product.price * checkout.qty)
-    end
+  end
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
