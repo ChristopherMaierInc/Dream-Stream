@@ -1,5 +1,8 @@
 class Cart < ApplicationRecord
+  belongs_to :order_status
   has_many :cart_products
+  
+  before_create :set_order_status
   before_save :update_total
 
   def subtotal
@@ -7,6 +10,10 @@ class Cart < ApplicationRecord
   end
 
 private
+
+  def set_order_status
+    self.order_status_id = 1
+  end
 
   def update_subtotal
     self[:subtotal] = subtotal
