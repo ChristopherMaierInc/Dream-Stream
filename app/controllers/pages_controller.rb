@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :set_cart
 
   def home
-    # @products = Product.all
+    @products = Product.all
   end
 
   def cart
@@ -16,11 +16,10 @@ class PagesController < ApplicationController
   end
 
   def purchase
-    @cart = CartItem.all
     # Amount in cents
     @total = 0
-    @cart.each do |cart|
-      @total = @total + (cart.product.price * cart.qty)
+    @cart.each do |checkout|
+      @total = @total + (checkout.product.price * checkout.qty)
     end
 
     customer = Stripe::Customer.create(
@@ -45,12 +44,13 @@ class PagesController < ApplicationController
   def set_cart
     if session.has_key? :cart_id
       # find the cart
-      # @cart = Cart.find(session[:cart_id])
+      @cart = Cart.find(session[:cart_id])
     else
       # make a new cart
-      # @cart = Cart.new
-      # session[:cart_id] = @cart.id
-      session[:cart_id] = rand(5..30)
+      @cart = Cart.new
+      @cart.save
+      session[:cart_id] = @cart.id
+
     end
   end
 

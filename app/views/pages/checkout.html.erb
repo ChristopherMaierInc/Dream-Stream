@@ -13,10 +13,10 @@
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-name="Dream Stream"
-          data-description="Item Description"
+          data-description="Pillows for the digital age."
           data-amount="<%= @amount %>"
           data-billing-address="true"
           data-shipping-address="true"
-          data-allow-remember-me="false"
+          data-allow-remember-me="true"
           data-locale="auto"></script>
 <% end %>
