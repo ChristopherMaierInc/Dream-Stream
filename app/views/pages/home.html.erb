@@ -10,6 +10,7 @@
     <footer>
       <h3><%= product.name %></h3>
       <p><%= product.description %></p>
+      <strong><p>$<%= product.price %></p></strong>
       <%= link_to "Buy", root_path, class: "button" %>
       <select>
         <option>Select an quantity</option>
