@@ -6,21 +6,21 @@
     </div>
     <div class="col-xs-4">
 
-      <%= form_for cart_product, remote: true do |f| %>
-        <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency cart_product.unit_price %></span></h4>
-        <div class="row">
-          <div class="col-xs-4">
-            <%= f.number_field :qty, value: cart_product.qty.to_i, class: "form-control", min: 1 %>
-            <%= f.hidden_field :product_id, value: product.id %>
-          </div>
-          <div class="col-xs-8 text-right">
-            <div class="btn-group">
-              <%= f.submit "Update Quantity", class: "btn btn-primary" %>
-              <%= link_to "Delete", cart_product, { data: { confirm: "Are you sure you wish to delete the product '#{cart_product.product.name}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
-            </div>
+      <%= form_for :cart_product, remote: true do |f| %>
+      <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency cart_product.unit_price %></span></h4>
+      <div class="row">
+        <div class="col-xs-4">
+          <%= f.number_field :qty, value: cart_product.qty.to_i, class: "form-control", min: 1 %>
+          <%= f.hidden_field :product_id, value: product.id %>
+        </div>
+        <div class="col-xs-8 text-right">
+          <div class="btn-group">
+            <%= f.submit "Update Quantity", class: "btn btn-primary" %>
+            <%= link_to "Delete", cart_product, { data: { confirm: "Are you sure you wish to delete the product '#{cart_product.product.name}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
           </div>
         </div>
-        <h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency cart_product.total_price %></span></h4>
+      </div>
+      <h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency cart_product.total_price %></span></h4>
       <% end %>
     </div>
 
