@@ -1,0 +1,164 @@
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (11.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20171019044246)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" decimal, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171019044246"]]
+  [1m[35m (8.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCartItems (20171019044338)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "cart_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "qty" integer, "product_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_681a180e84"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_cart_items_on_product_id" ON "cart_items" ("product_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171019044338"]]
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddCustomImageToProducts (20171019054114)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "products" ADD "custom_image" varchar[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171019054114"]]
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-19 05:42:01.818770"], ["updated_at", "2017-10-19 05:42:01.818770"]]
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_cart_items_on_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_cart_items_on_product_id' AND type='index'
+[0m
+  [1m[36mProduct Load (2.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "created_at", "updated_at", "custom_image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Standard DreamStream memory foam pillow"], ["price", 129.0], ["created_at", "2017-10-19 05:51:45.674266"], ["updated_at", "2017-10-19 05:51:45.674266"], ["custom_image", "standard.jpg"]]
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "created_at", "updated_at", "custom_image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Premium DreamStream"], ["price", 179.0], ["created_at", "2017-10-19 05:54:52.486099"], ["updated_at", "2017-10-19 05:54:52.486099"], ["custom_image", "premium.jpg"]]
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "created_at", "updated_at", "custom_image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Elite DreamStream"], ["price", 229.0], ["created_at", "2017-10-19 05:56:12.111886"], ["updated_at", "2017-10-19 05:56:12.111886"], ["custom_image", "elite.jpg"]]
+  [1m[35m (8.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "products" SET "name" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["name", "Standard DreamStream"], ["updated_at", "2017-10-19 05:56:46.089257"], ["id", 1]]
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-19 16:19:28 +1000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Coding/Ruby/lib/ruby/gems/2.4.0/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Coding/Ruby/lib/ruby/gems/2.4.0/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 72ms (Views: 37.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/pages/index" for 127.0.0.1 at 2017-10-19 16:19:34 +1000
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered pages/index.html.erb within layouts/application (26.6ms)
+Completed 500 Internal Server Error in 106ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `to_key' for #<Product::ActiveRecord_Relation:0x000000000ad7cee0>
+Did you mean?  to_ary
+               to_set):
+    1: <h1>DREAM STREAM</h1>
+    2: 
+    3: <%= form_for @products do |form| %>
+    4: <strong>Please add custom your custom image:</strong>
+    5:   <%= form.attachment_field :custom_image %>
+    6:    <%= form.submit %>
+  
+app/views/pages/index.html.erb:3:in `_app_views_pages_index_html_erb__1479898996_93117860'
+Started GET "/pages/index" for 127.0.0.1 at 2017-10-19 16:21:42 +1000
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (15.0ms)
+Completed 500 Internal Server Error in 110ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    1: <h1>DREAM STREAM</h1>
+    2: 
+    3: <%= form_with @products do |form| %>
+    4: <strong>Please add custom your custom image:</strong>
+    5:   <%= form.attachment_field :custom_image %>
+    6:    <%= form.submit %>
+  
+app/views/pages/index.html.erb:3:in `_app_views_pages_index_html_erb__1479898996_58771140'
+Started GET "/pages/index" for 127.0.0.1 at 2017-10-19 16:22:19 +1000
+Processing by PagesController#index as HTML
+Started GET "/pages/index" for 127.0.0.1 at 2017-10-19 16:22:29 +1000
+Started GET "/pages/index" for 127.0.0.1 at 2017-10-19 16:22:29 +1000
+Started GET "/pages/index" for 127.0.0.1 at 2017-10-19 16:22:29 +1000
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (9.5ms)
+Completed 500 Internal Server Error in 85ms
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    1: <h1>DREAM STREAM</h1>
+    2: 
+    3: <%= form_with @products do |form| %>
+    4: <strong>Please add custom your custom image:</strong>
+    5:   <%= form.attachment_field :custom_image %>
+    6:    <%= form.submit %>
+  
+app/views/pages/index.html.erb:3:in `_app_views_pages_index_html_erb__1479898996_63737760'
+Processing by PagesController#index as HTML
+Processing by PagesController#index as HTML
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendering pages/index.html.erb within layouts/application
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (20.1ms)
+  Rendered pages/index.html.erb within layouts/application (22.1ms)
+Completed 500 Internal Server Error in 179ms
+
+
+Completed 500 Internal Server Error in 180ms
+
+
+  Rendered pages/index.html.erb within layouts/application (12.0ms)
+  
+  
+Completed 500 Internal Server Error in 181ms
+
+
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+  
+    1: <h1>DREAM STREAM</h1>
+    2: 
+    3: <%= form_with @products do |form| %>
+    4: <strong>Please add custom your custom image:</strong>
+    5:   <%= form.attachment_field :custom_image %>
+    6:    <%= form.submit %>
+    1: <h1>DREAM STREAM</h1>
+    2: 
+    3: <%= form_with @products do |form| %>
+    4: <strong>Please add custom your custom image:</strong>
+    5:   <%= form.attachment_field :custom_image %>
+    6:    <%= form.submit %>
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+  
+  
+    1: <h1>DREAM STREAM</h1>
+    2: 
+    3: <%= form_with @products do |form| %>
+    4: <strong>Please add custom your custom image:</strong>
+    5:   <%= form.attachment_field :custom_image %>
+    6:    <%= form.submit %>
+app/views/pages/index.html.erb:3:in `_app_views_pages_index_html_erb__1479898996_63737760'
+app/views/pages/index.html.erb:3:in `_app_views_pages_index_html_erb__1479898996_63737760'
+  
+app/views/pages/index.html.erb:3:in `_app_views_pages_index_html_erb__1479898996_63737760'

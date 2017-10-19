@@ -1,2 +1,10 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<h1>DREAM STREAM</h1>
+
+<%= form_with @products do |form| %>
+<strong>Please add custom your custom image:</strong>
+  <%= form.attachment_field :custom_image %>
+   <%= form.submit %>
+<% end %>
+
+end
+<%= image_tag attachment_url(@products, :custom_image, :fill, 300, 300, format: "jpg") %>
