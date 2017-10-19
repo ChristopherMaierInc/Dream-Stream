@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20171019190603) do
 
-  create_table "cart_items", force: :cascade do |t|
-    t.integer "qty"
-    t.integer "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_cart_items_on_product_id"
-  end
-
   create_table "cart_products", force: :cascade do |t|
     t.integer "product_id"
     t.integer "cart_id"
@@ -49,16 +41,9 @@ ActiveRecord::Schema.define(version: 20171019190603) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer "cart_products_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cart_products_id"], name: "index_orders_on_cart_products_id"
-  end
-
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.decimal "price"
+    t.decimal "price", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_url"
