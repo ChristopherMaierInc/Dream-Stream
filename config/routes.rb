@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
   root 'pages#home'
 
   get 'pages/home', to: 'pages#home', as: 'home'
-
-  get 'pages/cart', to: 'pages#cart', as: 'cart'
 
   get 'pages/checkout', to: 'pages#checkout', as: 'checkout'
 
