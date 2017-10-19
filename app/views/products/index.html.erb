@@ -6,7 +6,16 @@
 <div class="flex one three-1000 center">
   <% @products.each do |product| %>
   <article class="card">
+<% if product.image_url.empty? %>
+<div class="custompic">
+<label class="dropimage">
+<input title="Drop image or click me" type="file">
+</label>
+</div>
+
+<%  else %>
     <%= image_tag product.image_url %>
+<% end %>
     <footer>
       <h3><%= product.name %></h3>
       <p><%= product.description %></p>
@@ -28,6 +37,7 @@
     </footer>
   </article>
   <% end %>
+
 </div>
 
 <p>Your session is:
