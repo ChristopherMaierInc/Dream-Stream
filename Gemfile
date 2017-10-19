@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+###
 # Use Stripe for payments
 gem 'stripe'
 # Use Boostrap for styling
