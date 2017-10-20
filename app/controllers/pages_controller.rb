@@ -34,6 +34,8 @@ class PagesController < ApplicationController
       :currency    => 'AUD'
     )
 
+    current_cart.destroy
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to checkout_pages_path
