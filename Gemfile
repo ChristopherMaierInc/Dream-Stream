@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Use Mailgun-Ruby gem to send mail
+gem 'mailgun-ruby', '~>1.1.6'
 # Use Devise for user and admin authentication/authorization
 gem 'devise'
 # Use Stripe for payments
