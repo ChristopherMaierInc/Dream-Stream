@@ -1,5 +1,6 @@
 <% if @cart.errors.any? || @cart_product.errors.any? %>
-alert("not valid.")
+alert("NOT VALID")
 <% else %>
-  $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
+  $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text').html_safe %>")
+  $(".navigation").html("<%= escape_javascript(render 'shared/navigation') %>")
 <% end %>
