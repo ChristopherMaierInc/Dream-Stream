@@ -1,3 +1,31 @@
 <div class="my-5 shopping-cart">
   <%= render "shopping_cart" %>
 </div>
+
+<div class="container">
+  <%= form_tag('/checkout') do %>
+    <article class="container jumbotron-fluid ">
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-name="DreamWeaver"
+            data-description="Softer than an angel's bosom"
+            data-amount="<%= (current_cart.subtotal * 100).to_i %>"
+            data-billing-address="false"
+            data-shipping-address="false"
+            data-allow-remember-me="true"
+            data-locale="auto"></script>
+  <% end %>
+
+  <% if flash[:notice] %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+  <% end %>
+</div>
