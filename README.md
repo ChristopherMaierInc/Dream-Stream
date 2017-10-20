@@ -1,24 +1,39 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Getting Started
 
-Things you may want to cover:
+Install Ruby on Rails 5.1 or higher on your local machine
 
-* Ruby version
+Fork the repository or clone if you have been added as a contributor
 
-* System dependencies
+```git clone https://github.com/ChristopherMaierInc/Dream-Stream.git```
 
-* Configuration
+Once you've got a local copy of the repo, open your terminal and cd into the app's directory.
 
-* Database creation
+Once there, run a bundle install to get the required gems onto your local copy.
 
-* Database initialization
+```bundle install```
 
-* How to run the test suite
+Then, run the migration to create a local schema.
 
-* Services (job queues, cache servers, search engines, etc.)
+```rails db:migrate```
 
-* Deployment instructions
+The app has a seed.rb file to seed the database with the current products. Run the following command next.
 
-* ...
+```rails db:seed```
+
+You should now be ready to work on the app as well as use the rails console which you can access via ```rails c```.
+
+##Environmental Variables
+
+Make sure to set the Stripe, MailGun and Heroku PostgreSQL environmental variables in your bash-profile file.
+
+``` open ~/.bash-profile```
+
+Copy and save them like so: ```export YOUR_ENV_VARIABLE="<Put the data here, e.g. password or a key>"```
+
+Make sure to restart all terminals once you've done this before continuing.
+
+##Heroku, Stripe, MailGun access
+
+Contact one of the admins of the project to get access to the ENV key values that you'll need.
