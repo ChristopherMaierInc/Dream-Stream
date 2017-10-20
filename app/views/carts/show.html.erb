@@ -23,9 +23,19 @@
             data-locale="auto"></script>
   <% end %>
 
+  <div class="container">
+    <p>Your current cart total is $<%= current_cart.subtotal %></p>
+  </div>
+
   <% if flash[:notice] %>
   <div class="notice">
     <%= flash[:notice] %>
+  <% else %>
+  <div class="container">
+    <p>Your current cart total is $<%= current_cart.subtotal %></p>
+  </div>
+  <% end %>
+
   </div>
   <% end %>
 </div>
