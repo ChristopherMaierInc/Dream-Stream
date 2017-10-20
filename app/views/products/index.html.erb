@@ -4,41 +4,11 @@
 </div>
 
 <div class="flex one three-1000 center">
-  <% @products.each do |product| %>
-  <article class="card">
-    <%= image_tag product.image_url %>
-    <footer>
-      <h3><%= product.name %></h3>
-      <p><%= product.description %></p>
-      <strong><p>$<%= product.price %></p></strong>
-      <%= link_to "Buy", root_path, class: "button" %>
-      <select>
-        <option>Select a quantity</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-      </select>
-    </footer>
-  </article>
-  <% end %>
+<% @products.each do |product| %>
+  <%= render "product_row", product: product, cart_product: @cart_product %>
+<% end %>
+
 </div>
 
 <p>Your session is:
   <%= session[:cart_id] %></p>
-
-  <h3 class="text-center">Products for Sale</h3>
-
-<div class="row">
-  <div class="col-xs-6 col-xs-offset-3">
-    <% @products.each do |product| %>
-      <%= render "product_row", product: product, cart_product: @cart_product %>
-    <% end %>
-  </div>
-</div>
