@@ -13,6 +13,7 @@ class CheckoutController < ApplicationController
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => @price_in_cents,
+
       :description => current_cart.cart_products
       :currency    => 'AUD'
     )
