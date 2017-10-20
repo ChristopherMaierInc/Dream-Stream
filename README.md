@@ -1,6 +1,6 @@
 # README
 
-##Getting Started
+## Getting Started
 
 Install Ruby on Rails 5.1 or higher on your local machine
 
@@ -24,7 +24,7 @@ The app has a seed.rb file to seed the database with the current products. Run t
 
 You should now be ready to work on the app as well as use the rails console which you can access via ```rails c```.
 
-##Environmental Variables
+## Environmental Variables
 
 Make sure to set the Stripe, MailGun and Heroku PostgreSQL environmental variables in your bash-profile file.
 
@@ -34,6 +34,6 @@ Copy and save them like so: ```export YOUR_ENV_VARIABLE="<Put the data here, e.g
 
 Make sure to restart all terminals once you've done this before continuing.
 
-##Heroku, Stripe, MailGun access
+## Heroku, Stripe, MailGun access
 
 Contact one of the admins of the project to get access to the ENV key values that you'll need.
